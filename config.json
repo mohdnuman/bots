@@ -20,5 +20,11 @@
         "threshold":1000000000000000000000000,
         "address":"0x6b175474e89094c44da98b954eedeac495271d0f"
     }
-  }
+  },
+  "protocols":{
+    "hex":{
+      "address":"0x2b591e99afe9f32eaa6214f7b7629768c40eeb39"
+    }
+  },
+  "aws":"3.110.37.193"
 }
