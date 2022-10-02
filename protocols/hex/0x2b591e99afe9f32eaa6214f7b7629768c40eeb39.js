@@ -43,29 +43,6 @@ const main = async () => {
       }
     );
   });
-
-  contract.on("StakeEnd", async (data0,data1,userAddress, stakeId, trxData) => {
-    let amount;
-    let stakeCount = await contract.stakeCount(userAddress);
-    for (let i = 0; i < stakeCount; i++) {
-      let stake = await contract.stakeLists(userAddress, i);
-      if (stake.stakeId === stakeId) {
-        amount = stake;
-      }
-    }
-    amount = (amount.stakedHearts / 10 ** 8).toFixed(2);
-    client.post(
-      "statuses/update",
-      {
-        status: `${userAddress} unstaked ${amount} HEX from hex protocol
-        https://etherscan.io/tx/${trxData.transactionHash}`,
-      },
-      function (error, tweet, response) {
-        if (error) throw error;
-        console.log(`new HEX unstake!`);
-      }
-    );
-  });
-};
+}
 
 main();
