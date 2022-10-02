@@ -1,11 +1,9 @@
 const { ethers, Contract } = require("ethers");
 const rpcURL = "https://cloudflare-eth.com/";
 const provider = new ethers.providers.JsonRpcProvider(rpcURL);
-const https = require("https");
-const config=require("../config.json");
+const config = require("../config.json");
 const Twitter = require("twitter");
 const abi = require("./abi.json");
-
 
 const client = new Twitter({
   consumer_key: "nZ2svFKO1dDiogksJNhH05u76",
@@ -23,7 +21,7 @@ const TRANSFER_THRESHOLD = config.tokens.weth.threshold;
 const main = async () => {
   const name = await contract.name();
   const symbol = await contract.symbol();
-  const decimals=await contract.decimals();
+  const decimals = await contract.decimals();
   console.log(
     `Whale tracker statrted! \nListening for large transfers on ${name}`
   );
@@ -31,22 +29,55 @@ const main = async () => {
   contract.on("Transfer", (from, to, amount, trxData) => {
     amount = amount.toString();
     if (amount >= TRANSFER_THRESHOLD) {
-        let sender=from;
-        let receiver=to;
+      let sender = from;
+      let receiver = to;
+
+      if (sender == "0x0000000000000000000000000000000000000000") {
         client.post(
-            "statuses/update",
-            {
-              status: `New whale transfer for ${name}: https://etherscan.io/tx/${
-                trxData.transactionHash
-              } ${(amount / 10 ** decimals).toFixed(
-                2
-              )} ${symbol} transferred from ${sender} to ${receiver}`,
-            },
-            function (error, tweet, response) {
-              if (error) throw error;
-              console.log("new tweet made!");
-            }
-          );
+          "statuses/update",
+          {
+            status: ` ${(amount / 10 ** decimals).toFixed(
+              2
+            )} ${symbol} minted to ${receiver}. https://etherscan.io/tx/${
+              trxData.transactionHash
+            }`,
+          },
+          function (error, tweet, response) {
+            if (error) throw error;
+            console.log(`new ${symbol} mint!`);
+          }
+        );
+      } else if (receiver == "0x0000000000000000000000000000000000000000") {
+        client.post(
+          "statuses/update",
+          {
+            status: ` ${(amount / 10 ** decimals).toFixed(
+              2
+            )} ${symbol} burned by ${sender}. https://etherscan.io/tx/${
+              trxData.transactionHash
+            }`,
+          },
+          function (error, tweet, response) {
+            if (error) throw error;
+            console.log(`new ${symbol} burn!`);
+          }
+        );
+      } else {
+        client.post(
+          "statuses/update",
+          {
+            status: `New whale transfer for ${name}: https://etherscan.io/tx/${
+              trxData.transactionHash
+            } ${(amount / 10 ** decimals).toFixed(
+              2
+            )} ${symbol} transferred from ${sender} to ${receiver}`,
+          },
+          function (error, tweet, response) {
+            if (error) throw error;
+            console.log(`new ${symbol} transfer!`);
+          }
+        );
+      }
     }
   });
 };
