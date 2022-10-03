@@ -3,7 +3,7 @@ const rpcURL = "https://cloudflare-eth.com/";
 const provider = new ethers.providers.JsonRpcProvider(rpcURL);
 const config = require("../../config.json");
 const Twitter = require("twitter");
-const abi = require("./0x71072bd71cc4f83154f1f77b4bd5e2d71bd6aa2c.json");
+const abi = require("./0x71072Bd71Cc4f83154F1f77b4bD5E2D71BD6aa2c.json");
 
 const client = new Twitter({
   consumer_key: "nZ2svFKO1dDiogksJNhH05u76",
