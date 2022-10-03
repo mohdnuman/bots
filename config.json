@@ -24,6 +24,11 @@
   "protocols":{
     "hex":{
       "address":"0x2b591e99afe9f32eaa6214f7b7629768c40eeb39"
+    },
+    "aladdin":{
+      "addresses":[
+        "0x71072bd71cc4f83154f1f77b4bd5e2d71bd6aa2c"
+      ]
     }
   },
   "aws":"3.110.37.193"
