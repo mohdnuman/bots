@@ -33,7 +33,8 @@
   },
   "price":{
     "uniswapv3":{
-      "ethusd":"0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8"
+      "ethusd":"0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8",
+      "btcusd":"0x99ac8ca7087fa4a2a1fb6357269965a2014abc35"
     }
   },
   "aws":"3.110.37.193"
