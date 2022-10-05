@@ -6,10 +6,10 @@ const Twitter = require("twitter");
 const abi = require("./abi.json");
 
 const client = new Twitter({
-  consumer_key: "nZ2svFKO1dDiogksJNhH05u76",
-  consumer_secret: "20h8F6WayuYcpEdVgaGo8AN3DflQV2RE6p3OuFIqGlMEQ2D5CH",
-  access_token_key: "1486096407299694593-xXHWqu7N6TwABsNyh17Xbw3Mwnjmyv",
-  access_token_secret: "3Ep5A6hUOTZyy77thXudXKO0r5UzT4hE41imlxlQQnFqZ",
+  consumer_key: "Rx8eJ7JjzWO5dC2lSQOpqMKOo",
+  consumer_secret: "0G7pIgEIxiOcbhFFn7nEmmDeXXYy8ih88Xg0UiCYqMSIgp8AfH",
+  access_token_key: "1577611183623766017-0mXmk5dwZeh0yzOIkswRZvgLAMksQT",
+  access_token_secret: "VEPPrh4sRpOZ36W8ZTG3G0RK8ZsNieCH3IQt5rOKysEZ9",
 });
 
 const contractAddress = config.tokens.wbtc.address;
