@@ -31,7 +31,7 @@ const main = async () => {
       },
       function (error, tweet, response) {
         if (error) throw error;
-        console.log(`new HEX stake!`);
+        console.log(`new ALD stake!`);
       }
     );
   });
