@@ -6,10 +6,10 @@ const Web3 = require("web3");
 var web3 = new Web3(new Web3.providers.HttpProvider(rpcURL));
 
 const client = new Twitter({
-  consumer_key: "nZ2svFKO1dDiogksJNhH05u76",
-  consumer_secret: "20h8F6WayuYcpEdVgaGo8AN3DflQV2RE6p3OuFIqGlMEQ2D5CH",
-  access_token_key: "1486096407299694593-xXHWqu7N6TwABsNyh17Xbw3Mwnjmyv",
-  access_token_secret: "3Ep5A6hUOTZyy77thXudXKO0r5UzT4hE41imlxlQQnFqZ",
+  consumer_key: "gw6si8pyPZsQxLdOweoWBsHAs",
+  consumer_secret: "a5A7GsQeapWD2McQFkDblfcEfKkAf4j6tkAsutxmxW3npi9MK4",
+  access_token_key: "1577600944446918657-U0XPHUc6By2vk02MJQOJtH2wIFxdiI",
+  access_token_secret: "siOdq27nIq947F1qGeBE0DHZo6ZN5Vaivp8Wjnd5Y40kW",
 });
 
 async function getPrice() {
@@ -25,7 +25,7 @@ async function getPrice() {
   client.post(
     "statuses/update",
     {
-      status: `${date} ETH/USD price on uniswap v3: ${price}$`,
+      status: `[${date}] ETH/USD price on uniswap v3: ${price}$`,
     },
     function (error, tweet, response) {
       if (error) throw error;
